@@ -2,27 +2,36 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
 )
 
 func main() {
-	shop := NewShopAPI("hoge.mul-pay.jp", "shop_id", "shop_pass")
-	strPointer := "tset"
+	shop := NewGMOPG(&GmopgConfig{
+		siteID:   "",
+		shopID:   "",
+		sitePass: "",
+		shopPass: "",
+	})
+
 	entryArg := &EntryTranArgs{
-		OrderID:  "order_id",
-		JobCd:    "AUTH",
-		Amount:   100,
-		ItemCode: &strPointer,
+		OrderID: "order-id",
+		JobCd:   "AUTH",
+		Amount:  100,
 	}
 
-	resp, err := shop.EntryTran(entryArg)
+	ok, ng, err := shop.EntryTran(entryArg)
 
 	if err != nil {
 		fmt.Println("--- error ---")
 		fmt.Println(err.Error())
 		return
 	}
-	fmt.Println("--- success ---")
-	fmt.Println(resp.Status)
-	fmt.Println(ioutil.ReadAll(resp.Body))
+
+	if ng != nil {
+		fmt.Println("--- response: error ---")
+		fmt.Println(ng)
+		return
+	}
+
+	fmt.Println("--- response: ok ---")
+	fmt.Println(ok.AccessID)
 }
