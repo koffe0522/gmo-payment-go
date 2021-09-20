@@ -9,7 +9,7 @@ import (
 
 func TestEntryTran(t *testing.T) {
 	type MockResponse struct {
-		path, query, contenttype, body string
+		path, contenttype, body string
 	}
 
 	response := &MockResponse{
