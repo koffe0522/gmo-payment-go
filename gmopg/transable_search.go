@@ -22,13 +22,13 @@ type SearchTradeResult struct {
 	AccessPass   string `json:"accessPass"`
 	ItemCode     string `json:"itemCode"`
 	Amount       string `json:"amount"`
-	Tax          int    `json:"tax"`
+	Tax          string `json:"tax"`
 	SiteID       string `json:"siteID"`
 	MemberID     string `json:"memberID"`
 	CardNo       string `json:"cardNo"`
 	Expire       string `json:"expired"`
 	Method       Method `json:"method"`
-	PayTimes     int    `json:"payTimes"`
+	PayTimes     string `json:"payTimes"`
 	Forward      string `json:"forward"`
 	TranID       string `json:"tranID"`
 	Approve      string `json:"approve"`
