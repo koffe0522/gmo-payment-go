@@ -20,7 +20,9 @@ func TestEntryTran(t *testing.T) {
 	handler := func(w http.ResponseWriter, r *http.Request) {
 		// Send response.
 		w.Header().Set("Content-Type", response.contenttype)
-		io.WriteString(w, response.body)
+		if _, err := io.WriteString(w, response.body); err != nil {
+			t.Fatal(err)
+		}
 	}
 
 	server := httptest.NewServer(http.HandlerFunc(handler))

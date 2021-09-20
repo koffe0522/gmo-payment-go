@@ -9,7 +9,7 @@ import (
 
 func TestAlterTran(t *testing.T) {
 	type MockResponse struct {
-		path, query, contenttype, body string
+		path, contenttype, body string
 	}
 
 	response := &MockResponse{
@@ -25,7 +25,9 @@ func TestAlterTran(t *testing.T) {
 	handler := func(w http.ResponseWriter, r *http.Request) {
 		// Send response.
 		w.Header().Set("Content-Type", response.contenttype)
-		io.WriteString(w, response.body)
+		if _, err := io.WriteString(w, response.body); err != nil {
+			t.Fatal(err)
+		}
 	}
 
 	server := httptest.NewServer(http.HandlerFunc(handler))

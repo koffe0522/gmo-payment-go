@@ -6,10 +6,6 @@ var (
 	gmopg GMOPG
 )
 
-type MockClient struct {
-	BaseURL string
-}
-
 func setup(baseURL string) {
 	gmopg = Init(&Config{
 		BaseURL:  &baseURL,
@@ -19,9 +15,6 @@ func setup(baseURL string) {
 		ShopPass: "shoppass",
 	})
 
-	// gmopg.client = &MockClient{
-	// 	BaseURL: gmopg.baseURL,
-	// }
 	gmopg.client = &httpc.Client{
 		BaseURL: gmopg.baseURL,
 	}
