@@ -14,7 +14,7 @@ type ExecTranArgs struct {
 	CardNo       *string  `json:"cardNo,omitempty"`
 	Expire       *string  `json:"expired,omitempty"`
 	SecurityCode *string  `json:"securityCode,omitempty"`
-	Token        *string  `json:"shopID,omitempty"`
+	Token        *string  `json:"token,omitempty"`
 	Pin          *string  `json:"pin,omitempty"`
 	SiteID       *string  `json:"siteID,omitempty"`
 	SitePass     *string  `json:"sitePass,omitempty"`

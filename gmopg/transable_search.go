@@ -26,7 +26,7 @@ type SearchTradeResult struct {
 	SiteID       string `json:"siteID"`
 	MemberID     string `json:"memberID"`
 	CardNo       string `json:"cardNo"`
-	Expire       string `json:"expired"`
+	Expire       string `json:"expire"`
 	Method       Method `json:"method"`
 	PayTimes     string `json:"payTimes"`
 	Forward      string `json:"forward"`
